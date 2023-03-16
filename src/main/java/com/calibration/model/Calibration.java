@@ -24,6 +24,9 @@ public class Calibration {
     @Column(name = "order_number")
     String orderNumber;
 
+    @Column(name = "certificate_number")
+    String certificateNumber;
+
     @Column(name = "receivedDate", columnDefinition = "DATE")
     Date receivedDate;
 

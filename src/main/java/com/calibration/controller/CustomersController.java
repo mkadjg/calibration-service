@@ -4,6 +4,7 @@ import com.calibration.dto.CustomerRegisterDto;
 import com.calibration.repository.CustomersRepository;
 import com.calibration.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,7 +23,7 @@ public class CustomersController {
 
     @PostMapping("/register")
     public Object register(@RequestBody CustomerRegisterDto dto) {
-        return customerService.register(dto);
+        return ResponseEntity.status(201).body(customerService.register(dto));
     }
 
     @GetMapping("/find-all")
