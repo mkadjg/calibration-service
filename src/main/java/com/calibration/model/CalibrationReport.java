@@ -21,19 +21,19 @@ public class CalibrationReport {
     int id;
 
     @Column(name = "instrument_indication")
-    int instrumentIndication;
+    Integer instrumentIndication;
 
     @Column(name = "standard_indication_up")
-    int standardIndicationUp;
+    Integer standardIndicationUp;
 
     @Column(name = "standard_indication_down")
-    int standardIndicationDown;
+    Integer standardIndicationDown;
 
     @Column(name = "correction_up")
-    int correctionUp;
+    Integer correctionUp;
 
     @Column(name = "correction_down")
-    int correctionDown;
+    Integer correctionDown;
 
     @ManyToOne
     @JoinColumn(name = "calibration_id", referencedColumnName = "calibration_id")

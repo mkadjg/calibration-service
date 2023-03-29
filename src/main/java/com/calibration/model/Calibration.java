@@ -40,19 +40,19 @@ public class Calibration {
     String calibrationMethod;
 
     @Column(name = "env_condition_t_before")
-    int envConditionTBefore;
+    Integer envConditionTBefore;
 
     @Column(name = "env_condition_t_after")
-    int envConditionTAfter;
+    Integer envConditionTAfter;
 
     @Column(name = "env_condition_rh_before")
-    int envConditionRhBefore;
+    Integer envConditionRhBefore;
 
     @Column(name = "env_condition_rh_after")
-    int envConditionRhAfter;
+    Integer envConditionRhAfter;
 
     @Column(name = "uncertainly")
-    int uncertainly;
+    Integer uncertainly;
 
     @Column(name = "standard_name")
     String standardName;

@@ -6,28 +6,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "performance_assessment")
-public class PerformanceAssessment {
+@Table(name = "calibration_track")
+public class CalibrationTrack {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "performance_assessment_id", nullable = false)
+    @Column(name = "calibration_track_id", nullable = false)
     int id;
 
-    @Column(name = "performance_assessment_note", columnDefinition = "TEXT")
-    String performanceAssessmentNote;
-
-    @Column(name = "rating")
-    Integer rating;
+    @Column(name = "track_date", columnDefinition = "DATE")
+    Date trackDate;
 
     @ManyToOne
     @JoinColumn(name = "calibration_id", referencedColumnName = "calibration_id")
     Calibration calibration;
 
+    @ManyToOne
+    @JoinColumn(name = "calibration_status_id", referencedColumnName = "calibration_status_id")
+    CalibrationStatus calibrationStatus;
 }

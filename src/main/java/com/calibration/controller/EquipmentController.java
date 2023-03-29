@@ -25,9 +25,9 @@ public class EquipmentController {
         this.customersRepository = customersRepository;
     }
 
-    @GetMapping("/find-all")
-    public Object findAll() {
-        return equipmentRepository.findAll();
+    @GetMapping("/find-by-customer-id/{customerId}")
+    public Object findAll(@PathVariable int customerId) {
+        return equipmentRepository.findByCustomerId(customerId);
     }
 
     @PostMapping("/create")
@@ -49,6 +49,35 @@ public class EquipmentController {
         equipment.setCustomers(customer);
 
         return ResponseEntity.status(201).body(equipmentRepository.save(equipment));
+    }
+
+    @PutMapping("/update/{id}")
+    public Object update(@RequestBody EquipmentDto dto, @PathVariable int id) {
+        // equipment
+        Equipment equipment = equipmentRepository.getReferenceById(id);
+        equipment.setEquipmentName(dto.getEquipmentName());
+        equipment.setCapacity(dto.getCapacity());
+        equipment.setManufacturer(dto.getManufacturer());
+        equipment.setGraduation(dto.getGraduation());
+        equipment.setModelType(dto.getModelType());
+        equipment.setSerialNumber(dto.getSerialNumber());
+
+        // customer
+        Customers customer = customersRepository.findById(dto.getCustomerId()).orElse(null);
+        if (Objects.isNull(customer)) {
+            return ResponseEntity.badRequest().body("Pelanggan tidak terdaftar!");
+        }
+        equipment.setCustomers(customer);
+
+        return ResponseEntity.status(200).body(equipmentRepository.save(equipment));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Object delete(@PathVariable int id) {
+        // equipment
+        Equipment equipment = equipmentRepository.getReferenceById(id);
+        equipmentRepository.delete(equipment);
+        return ResponseEntity.status(200).body("Hapus data berhasil!");
     }
 
 }
