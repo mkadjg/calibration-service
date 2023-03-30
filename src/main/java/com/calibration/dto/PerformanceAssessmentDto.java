@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CalibrationSubmissionDto {
-    int equipmentId;
-    String calibrationNote;
+public class PerformanceAssessmentDto {
+    int calibrationId;
+    String performanceAssessmentNote;
+    int rating;
 }

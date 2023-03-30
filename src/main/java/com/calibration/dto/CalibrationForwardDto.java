@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CalibrationSubmissionDto {
-    int equipmentId;
-    String calibrationNote;
+public class CalibrationForwardDto {
+    int employeeId;
 }

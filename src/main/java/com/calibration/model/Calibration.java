@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 @Entity
 @Table(name = "calibration")
 public class Calibration {
@@ -68,6 +68,9 @@ public class Calibration {
 
     @Column(name = "issuence_date", columnDefinition = "DATE")
     Date issuenceDate;
+
+    @Column(name = "calibration_note")
+    String calibrationNote;
 
     @ManyToOne
     @JoinColumn(name = "technician_id", referencedColumnName = "employee_id")

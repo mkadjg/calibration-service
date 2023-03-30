@@ -1,7 +1,7 @@
 package com.calibration.controller;
 
+import com.calibration.dto.AutocompleteDto;
 import com.calibration.dto.EquipmentDto;
-import com.calibration.model.Customers;
 import com.calibration.model.Equipment;
 import com.calibration.repository.CustomersRepository;
 import com.calibration.repository.EquipmentRepository;
@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Objects;
+import javax.persistence.EntityNotFoundException;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/equipment")
@@ -30,53 +31,54 @@ public class EquipmentController {
         return equipmentRepository.findByCustomerId(customerId);
     }
 
-    @PostMapping("/create")
+    @GetMapping("/autocomplete/{customerId}")
+    public Object autocomplete(@PathVariable int customerId) {
+        return equipmentRepository.findByCustomerId(customerId)
+                .stream()
+                .map(equipment -> AutocompleteDto.builder()
+                        .id(equipment.getId())
+                        .label(equipment.getEquipmentName()
+                                .concat(" - ")
+                                .concat(equipment.getManufacturer())
+                                .concat(" - ")
+                                .concat(equipment.getModelType())
+                                .concat(" - ")
+                                .concat(equipment.getSerialNumber()))
+                        .build())
+                .collect(Collectors.toList());
+    }
+
+    @PostMapping("")
     public Object create(@RequestBody EquipmentDto dto) {
-        // equipment
-        Equipment equipment = new Equipment();
-        equipment.setEquipmentName(dto.getEquipmentName());
-        equipment.setCapacity(dto.getCapacity());
-        equipment.setManufacturer(dto.getManufacturer());
-        equipment.setGraduation(dto.getGraduation());
-        equipment.setModelType(dto.getModelType());
-        equipment.setSerialNumber(dto.getSerialNumber());
-
-        // customer
-        Customers customer = customersRepository.findById(dto.getCustomerId()).orElse(null);
-        if (Objects.isNull(customer)) {
-            return ResponseEntity.badRequest().body("Pelanggan tidak terdaftar!");
-        }
-        equipment.setCustomers(customer);
-
-        return ResponseEntity.status(201).body(equipmentRepository.save(equipment));
+        return ResponseEntity.status(201).body(equipmentRepository.save(Equipment.builder()
+                .equipmentName(dto.getEquipmentName())
+                .capacity(dto.getCapacity())
+                .graduation(dto.getGraduation())
+                .manufacturer(dto.getManufacturer())
+                .modelType(dto.getModelType())
+                .serialNumber(dto.getSerialNumber())
+                .customers(customersRepository.findById(dto.getCustomerId()).orElseThrow(EntityNotFoundException::new))
+                .build()));
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public Object update(@RequestBody EquipmentDto dto, @PathVariable int id) {
-        // equipment
-        Equipment equipment = equipmentRepository.getReferenceById(id);
-        equipment.setEquipmentName(dto.getEquipmentName());
-        equipment.setCapacity(dto.getCapacity());
-        equipment.setManufacturer(dto.getManufacturer());
-        equipment.setGraduation(dto.getGraduation());
-        equipment.setModelType(dto.getModelType());
-        equipment.setSerialNumber(dto.getSerialNumber());
-
-        // customer
-        Customers customer = customersRepository.findById(dto.getCustomerId()).orElse(null);
-        if (Objects.isNull(customer)) {
-            return ResponseEntity.badRequest().body("Pelanggan tidak terdaftar!");
-        }
-        equipment.setCustomers(customer);
-
-        return ResponseEntity.status(200).body(equipmentRepository.save(equipment));
+        Equipment equipment = equipmentRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return ResponseEntity.status(200).body(equipmentRepository.save(equipment.toBuilder()
+                .equipmentName(dto.getEquipmentName())
+                .capacity(dto.getCapacity())
+                .graduation(dto.getGraduation())
+                .manufacturer(dto.getManufacturer())
+                .modelType(dto.getModelType())
+                .serialNumber(dto.getSerialNumber())
+                .customers(customersRepository.findById(dto.getCustomerId()).orElseThrow(EntityNotFoundException::new))
+                .build()));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public Object delete(@PathVariable int id) {
-        // equipment
-        Equipment equipment = equipmentRepository.getReferenceById(id);
-        equipmentRepository.delete(equipment);
+        equipmentRepository.findById(id)
+                .ifPresentOrElse(equipment -> equipmentRepository.delete(equipment), () -> { throw new EntityNotFoundException(); });
         return ResponseEntity.status(200).body("Hapus data berhasil!");
     }
 
