@@ -29,8 +29,18 @@ public class CalibrationController {
     }
 
     @GetMapping("/find-by-customer-id/{customerId}")
-    public Object findAll(@PathVariable int customerId) {
+    public Object findByCustomerId(@PathVariable int customerId) {
         return calibrationRepository.findByCustomerId(customerId);
+    }
+
+    @GetMapping("/find-by-technician-id/{technicianId}")
+    public Object findByTechnicianId(@PathVariable int technicianId) {
+        return calibrationRepository.findByTechnicianId(technicianId);
+    }
+
+    @GetMapping("/find-by-typewriter-id/{typewriterId}")
+    public Object findByTypewriterId(@PathVariable int typewriterId) {
+        return calibrationRepository.findByTypewriterId(typewriterId);
     }
 
     @GetMapping("")

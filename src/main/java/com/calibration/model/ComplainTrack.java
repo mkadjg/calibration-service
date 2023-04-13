@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -22,7 +23,7 @@ public class ComplainTrack {
     int id;
 
     @Column(name = "track_date", columnDefinition = "DATE")
-    Date trackDate;
+    LocalDate trackDate;
 
     @ManyToOne
     @JoinColumn(name = "complain_id", referencedColumnName = "complain_id")

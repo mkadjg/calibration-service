@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -28,13 +29,13 @@ public class Calibration {
     String certificateNumber;
 
     @Column(name = "receivedDate", columnDefinition = "DATE")
-    Date receivedDate;
+    LocalDate receivedDate;
 
     @Column(name = "calibration_location")
     String calibrationLocation;
 
     @Column(name = "calibration_date", columnDefinition = "DATE")
-    Date calibrationDate;
+    LocalDate calibrationDate;
 
     @Column(name = "calibration_method")
     String calibrationMethod;
@@ -66,11 +67,17 @@ public class Calibration {
     @Column(name = "standard_traceable_to_si")
     String standardTraceableToSI;
 
-    @Column(name = "issuence_date", columnDefinition = "DATE")
-    Date issuenceDate;
+    @Column(name = "issuance_date", columnDefinition = "DATE")
+    LocalDate issuanceDate;
 
     @Column(name = "calibration_note")
     String calibrationNote;
+
+    @Column(name = "confidence_level")
+    Integer confidenceLevel;
+
+    @Column(name = "coverage_factor")
+    Integer coverageFactor;
 
     @ManyToOne
     @JoinColumn(name = "technician_id", referencedColumnName = "employee_id")

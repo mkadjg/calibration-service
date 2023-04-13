@@ -10,6 +10,8 @@ public interface CalibrationService {
     Calibration confirm(CalibrationConfirmationDto dto, Calibration calibration);
     Calibration forwardToTechnician(CalibrationForwardDto dto, Calibration calibration);
     Calibration confirmByTechnician(Calibration calibration);
+    Calibration doneByTechnician(Calibration calibration);
     Calibration forwardToTypewriter(CalibrationForwardDto dto, Calibration calibration);
     Calibration confirmByTypewriter(Calibration calibration);
+    Calibration doneByTypewriter(Calibration calibration);
 }
