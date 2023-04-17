@@ -87,4 +87,18 @@ public class CalibrationController {
         return ResponseEntity.ok().body(calibrationService.confirmByTypewriter(calibration));
     }
 
+    @PostMapping("/forward-to-customer/{calibrationId}")
+    @Transactional
+    public Object forwardToCustomer(@PathVariable int calibrationId) {
+        Calibration calibration = calibrationRepository.findById(calibrationId).orElseThrow(EntityNotFoundException::new);
+        return ResponseEntity.ok().body(calibrationService.forwardToCustomer(calibration));
+    }
+
+    @PostMapping("/finish-by-customer/{calibrationId}")
+    @Transactional
+    public Object finishByCustomer(@PathVariable int calibrationId) {
+        Calibration calibration = calibrationRepository.findById(calibrationId).orElseThrow(EntityNotFoundException::new);
+        return ResponseEntity.ok().body(calibrationService.finishByCustomer(calibration));
+    }
+
 }

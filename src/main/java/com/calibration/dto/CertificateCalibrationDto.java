@@ -21,5 +21,5 @@ public class CertificateCalibrationDto {
     String standardName;
     String standardType;
     String standardSerialNumber;
-    String standardTraceableToSi;
+    String standardTraceableToSI;
 }

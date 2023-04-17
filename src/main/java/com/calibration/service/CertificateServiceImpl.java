@@ -30,6 +30,6 @@ public class CertificateServiceImpl implements CertificateService {
                 .standardName(dto.getStandardName())
                 .standardType(dto.getStandardType())
                 .standardSerialNumber(dto.getStandardSerialNumber())
-                .standardTraceableToSI(dto.getStandardTraceableToSi()).build());
+                .standardTraceableToSI(dto.getStandardTraceableToSI()).build());
     }
 }

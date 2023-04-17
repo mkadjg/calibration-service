@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class PerformanceAssessmentDto {
-    int calibrationId;
     String performanceAssessmentNote;
     int rating;
 }

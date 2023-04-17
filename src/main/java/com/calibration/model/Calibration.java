@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -78,6 +77,9 @@ public class Calibration {
 
     @Column(name = "coverage_factor")
     Integer coverageFactor;
+
+    @Column(name = "is_assessed")
+    Boolean isAssessed;
 
     @ManyToOne
     @JoinColumn(name = "technician_id", referencedColumnName = "employee_id")

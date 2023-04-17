@@ -23,8 +23,8 @@ public class CalibrationReportDto {
     @Builder
     public static class Report {
         int instrumentIndication;
-        int standardInstrumentUp;
-        int standardInstrumentDown;
+        int standardIndicationUp;
+        int standardIndicationDown;
         int correctionUp;
         int correctionDown;
     }

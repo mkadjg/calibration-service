@@ -33,8 +33,8 @@ public class CalibrationReportServiceImpl implements CalibrationReportService {
 
         dto.getResult().forEach(report -> calibrationReportRepository.save(CalibrationReport.builder()
                 .instrumentIndication(report.getInstrumentIndication())
-                .standardIndicationUp(report.getStandardInstrumentUp())
-                .standardIndicationDown(report.getStandardInstrumentDown())
+                .standardIndicationUp(report.getStandardIndicationUp())
+                .standardIndicationDown(report.getStandardIndicationDown())
                 .correctionUp(report.getCorrectionUp())
                 .correctionDown(report.getCorrectionDown())
                 .calibration(result)

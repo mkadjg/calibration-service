@@ -230,5 +230,48 @@ public class CalibrationServiceImpl implements CalibrationService {
         return result;
     }
 
+    @Override
+    public Calibration forwardToCustomer(Calibration calibration) {
+        CalibrationStatus calibrationStatus = calibrationStatusRepository
+                .findById(9)
+                .orElseThrow(EntityNotFoundException::new);
+
+        Calibration result = calibrationRepository.save(
+                calibration.toBuilder()
+                        .calibrationStatus(calibrationStatus)
+                        .build());
+
+        calibrationTrackRepository.save(
+                CalibrationTrack.builder()
+                        .calibrationStatus(calibrationStatus)
+                        .calibration(result)
+                        .trackDate(LocalDate.now())
+                        .build()
+        );
+
+        return result;
+    }
+
+    @Override
+    public Calibration finishByCustomer(Calibration calibration) {
+        CalibrationStatus calibrationStatus = calibrationStatusRepository
+                .findById(10)
+                .orElseThrow(EntityNotFoundException::new);
+
+        Calibration result = calibrationRepository.save(
+                calibration.toBuilder()
+                        .calibrationStatus(calibrationStatus)
+                        .build());
+
+        calibrationTrackRepository.save(
+                CalibrationTrack.builder()
+                        .calibrationStatus(calibrationStatus)
+                        .calibration(result)
+                        .trackDate(LocalDate.now())
+                        .build()
+        );
+
+        return result;
+    }
 
 }

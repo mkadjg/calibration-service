@@ -14,4 +14,6 @@ public interface CalibrationService {
     Calibration forwardToTypewriter(CalibrationForwardDto dto, Calibration calibration);
     Calibration confirmByTypewriter(Calibration calibration);
     Calibration doneByTypewriter(Calibration calibration);
+    Calibration forwardToCustomer(Calibration calibration);
+    Calibration finishByCustomer(Calibration calibration);
 }
