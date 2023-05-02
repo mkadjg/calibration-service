@@ -31,6 +31,10 @@ public class CalibrationReportServiceImpl implements CalibrationReportService {
                 .coverageFactor(dto.getCoverageFactor())
                 .build());
 
+        if (!calibrationReportRepository.findByCalibrationId(calibration.getId()).isEmpty()) {
+            calibrationReportRepository.deleteAllReportByCalibrationId(calibration.getId());
+        }
+
         dto.getResult().forEach(report -> calibrationReportRepository.save(CalibrationReport.builder()
                 .instrumentIndication(report.getInstrumentIndication())
                 .standardIndicationUp(report.getStandardIndicationUp())

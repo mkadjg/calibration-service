@@ -78,7 +78,8 @@ public class EquipmentController {
     @DeleteMapping("/{id}")
     public Object delete(@PathVariable int id) {
         equipmentRepository.findById(id)
-                .ifPresentOrElse(equipment -> equipmentRepository.delete(equipment), () -> { throw new EntityNotFoundException(); });
+                .ifPresentOrElse(equipment -> equipmentRepository.delete(equipment),
+                        () -> { throw new EntityNotFoundException(); });
         return ResponseEntity.status(200).body("Hapus data berhasil!");
     }
 

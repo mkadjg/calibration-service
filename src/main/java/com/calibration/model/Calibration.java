@@ -81,6 +81,9 @@ public class Calibration {
     @Column(name = "is_assessed")
     Boolean isAssessed;
 
+    @Column(name = "is_complain")
+    Boolean isComplain;
+
     @ManyToOne
     @JoinColumn(name = "technician_id", referencedColumnName = "employee_id")
     Employees technician;

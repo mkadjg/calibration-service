@@ -21,9 +21,9 @@ public class ComplainType {
     int id;
 
     @Column(name = "complain_type_code")
-    String calibrationStatusCode;
+    String complainTypeCode;
 
     @Column(name = "complain_type_name")
-    String calibrationStatusName;
+    String complainTypeName;
 
 }

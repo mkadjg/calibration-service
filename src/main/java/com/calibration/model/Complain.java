@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 @Entity
 @Table(name = "complain")
 public class Complain {
@@ -19,6 +19,9 @@ public class Complain {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "complain_id", nullable = false)
     int id;
+
+    @Column(name = "complain_number")
+    String complainNumber;
 
     @Column(name = "complain_note", columnDefinition = "TEXT")
     String complainNote;
