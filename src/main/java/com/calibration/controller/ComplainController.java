@@ -40,6 +40,16 @@ public class ComplainController {
         return complainRepository.findByCustomerId(customerId);
     }
 
+    @GetMapping("/find-by-technician-id/{technicianId}")
+    public Object findByTechnicianId(@PathVariable int technicianId) {
+        return complainRepository.findByTechnicianId(technicianId);
+    }
+
+    @GetMapping("/find-by-typewriter-id/{typewriterId}")
+    public Object findByTypewriterId(@PathVariable int typewriterId) {
+        return complainRepository.findByTypewriterId(typewriterId);
+    }
+
     @GetMapping("/find-all")
     public Object findAll() {
         return complainRepository.findAll();

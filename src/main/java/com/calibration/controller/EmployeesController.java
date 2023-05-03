@@ -33,12 +33,12 @@ public class EmployeesController {
     }
 
     @PostMapping("/create")
-    public Object create(EmployeeDto dto) {
+    public Object create(@RequestBody EmployeeDto dto) {
         return ResponseEntity.status(201).body(employeeService.create(dto));
     }
 
     @PutMapping("/{employeeId}")
-    public Object update(@PathVariable int employeeId, EmployeeDto dto) {
+    public Object update(@PathVariable int employeeId, @RequestBody EmployeeDto dto) {
         Employees employees = employeesRepository.findById(employeeId).orElseThrow(EntityNotFoundException::new);
         return ResponseEntity.ok().body(employeeService.update(employees, dto));
     }
