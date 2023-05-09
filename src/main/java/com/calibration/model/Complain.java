@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +23,9 @@ public class Complain {
 
     @Column(name = "complain_number")
     String complainNumber;
+
+    @Column(name = "complain_date", columnDefinition = "DATE")
+    LocalDate complainDate;
 
     @Column(name = "complain_note", columnDefinition = "TEXT")
     String complainNote;

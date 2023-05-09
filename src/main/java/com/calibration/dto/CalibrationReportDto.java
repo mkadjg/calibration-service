@@ -15,6 +15,10 @@ public class CalibrationReportDto {
     int uncertainly;
     int confidenceLevel;
     int coverageFactor;
+    int envConditionTBefore;
+    int envConditionTAfter;
+    int envConditionRhBefore;
+    int envConditionRhAfter;
     List<Report> result;
 
     @Data

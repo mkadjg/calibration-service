@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.naming.ServiceUnavailableException;
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 public class ComplainServiceImpl implements ComplainService {
@@ -56,7 +57,8 @@ public class ComplainServiceImpl implements ComplainService {
         Complain complain = complainRepository.save(Complain.builder()
                 .calibration(result)
                 .complainNote(dto.getComplainNote())
-                        .complainType(complainType)
+                .complainDate(LocalDate.now())
+                .complainType(complainType)
                 .complainStatus(complainStatus)
                 .build());
 
@@ -64,7 +66,7 @@ public class ComplainServiceImpl implements ComplainService {
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
                         .complain(complain)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return complain;
@@ -84,7 +86,7 @@ public class ComplainServiceImpl implements ComplainService {
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
                         .complain(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return result;
@@ -127,7 +129,7 @@ public class ComplainServiceImpl implements ComplainService {
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
                         .complain(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
         return result;
     }
@@ -145,7 +147,7 @@ public class ComplainServiceImpl implements ComplainService {
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
                         .complain(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return result;
@@ -164,7 +166,7 @@ public class ComplainServiceImpl implements ComplainService {
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
                         .complain(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return result;
@@ -183,7 +185,7 @@ public class ComplainServiceImpl implements ComplainService {
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
                         .complain(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return result;
@@ -202,7 +204,7 @@ public class ComplainServiceImpl implements ComplainService {
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
                         .complain(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return result;
@@ -221,7 +223,7 @@ public class ComplainServiceImpl implements ComplainService {
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
                         .complain(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return result;
@@ -240,7 +242,7 @@ public class ComplainServiceImpl implements ComplainService {
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
                         .complain(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return result;

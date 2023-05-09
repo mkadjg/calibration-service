@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 public class CalibrationServiceImpl implements CalibrationService {
@@ -59,7 +60,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(calibration)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build()
         );
 
@@ -83,7 +84,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build()
         );
 
@@ -110,7 +111,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build()
         );
 
@@ -132,7 +133,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build()
         );
 
@@ -154,7 +155,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return result;
@@ -180,7 +181,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build()
         );
 
@@ -202,7 +203,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build()
         );
 
@@ -224,7 +225,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build());
 
         return result;
@@ -245,7 +246,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build()
         );
 
@@ -267,7 +268,7 @@ public class CalibrationServiceImpl implements CalibrationService {
                 CalibrationTrack.builder()
                         .calibrationStatus(calibrationStatus)
                         .calibration(result)
-                        .trackDate(LocalDate.now())
+                        .trackDate(LocalDateTime.now())
                         .build()
         );
 

@@ -14,10 +14,6 @@ public class CertificateCalibrationDto {
     String calibrationMethod;
     String calibrationLocation;
     String issuanceDate;
-    Integer envConditionTBefore;
-    Integer envConditionTAfter;
-    Integer envConditionRhBefore;
-    Integer envConditionRhAfter;
     String standardName;
     String standardType;
     String standardSerialNumber;

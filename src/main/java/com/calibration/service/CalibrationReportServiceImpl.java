@@ -29,6 +29,10 @@ public class CalibrationReportServiceImpl implements CalibrationReportService {
                 .uncertainly(dto.getUncertainly())
                 .confidenceLevel(dto.getConfidenceLevel())
                 .coverageFactor(dto.getCoverageFactor())
+                .envConditionTBefore(dto.getEnvConditionTBefore())
+                .envConditionTAfter(dto.getEnvConditionTAfter())
+                .envConditionRhBefore(dto.getEnvConditionRhBefore())
+                .envConditionRhAfter(dto.getEnvConditionRhAfter())
                 .build());
 
         if (!calibrationReportRepository.findByCalibrationId(calibration.getId()).isEmpty()) {
