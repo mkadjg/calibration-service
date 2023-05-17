@@ -107,7 +107,7 @@ public class DashboardServiceImpl implements DashboardService {
         return customers.stream().map(customer ->
                 CustomerAnalysisDto.builder()
                     .customers(customer)
-                    .count(complainRepository.countComplainByCustomerId(customer.getId()))
+                    .count(complainRepository.countComplainByCustomerIdAndTechnicianId(customer.getId(), technicianId))
                     .build()
         ).collect(Collectors.toList());
     }
@@ -118,7 +118,7 @@ public class DashboardServiceImpl implements DashboardService {
         return customers.stream().map(customer ->
                 CustomerAnalysisDto.builder()
                     .customers(customer)
-                    .count(complainRepository.countComplainByCustomerId(customer.getId()))
+                    .count(complainRepository.countComplainByCustomerIdAndTypewriterId(customer.getId(), typewriterId))
                     .build()
         ).collect(Collectors.toList());
     }
