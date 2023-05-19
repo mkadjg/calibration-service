@@ -238,6 +238,10 @@ public class ComplainServiceImpl implements ComplainService {
                 .complainStatus(complainStatus)
                 .build());
 
+        calibrationRepository.save(complain.getCalibration().toBuilder()
+                .isComplain(false)
+                .build());
+
         complainTrackRepository.save(
                 ComplainTrack.builder()
                         .complainStatus(complainStatus)
