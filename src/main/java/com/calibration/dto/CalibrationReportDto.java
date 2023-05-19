@@ -12,13 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class CalibrationReportDto {
-    int uncertainly;
-    int confidenceLevel;
-    int coverageFactor;
-    int envConditionTBefore;
-    int envConditionTAfter;
-    int envConditionRhBefore;
-    int envConditionRhAfter;
+    Float uncertainly;
+    Float confidenceLevel;
+    Float coverageFactor;
+    Float envConditionTBefore;
+    Float envConditionTAfter;
+    Float envConditionRhBefore;
+    Float envConditionRhAfter;
     List<Report> result;
 
     @Data

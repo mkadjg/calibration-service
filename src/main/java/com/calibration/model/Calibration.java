@@ -40,19 +40,19 @@ public class Calibration {
     String calibrationMethod;
 
     @Column(name = "env_condition_t_before")
-    Integer envConditionTBefore;
+    Float envConditionTBefore;
 
     @Column(name = "env_condition_t_after")
-    Integer envConditionTAfter;
+    Float envConditionTAfter;
 
     @Column(name = "env_condition_rh_before")
-    Integer envConditionRhBefore;
+    Float envConditionRhBefore;
 
     @Column(name = "env_condition_rh_after")
-    Integer envConditionRhAfter;
+    Float envConditionRhAfter;
 
     @Column(name = "uncertainly")
-    Integer uncertainly;
+    Float uncertainly;
 
     @Column(name = "standard_name")
     String standardName;
@@ -73,10 +73,10 @@ public class Calibration {
     String calibrationNote;
 
     @Column(name = "confidence_level")
-    Integer confidenceLevel;
+    Float confidenceLevel;
 
     @Column(name = "coverage_factor")
-    Integer coverageFactor;
+    Float coverageFactor;
 
     @Column(name = "is_assessed")
     Boolean isAssessed;

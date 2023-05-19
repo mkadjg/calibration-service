@@ -4,20 +4,21 @@ import com.calibration.dto.CalibrationReportDto;
 import com.calibration.model.Calibration;
 import com.calibration.model.CalibrationReport;
 import com.calibration.repository.CalibrationReportRepository;
+import com.calibration.repository.CalibrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CalibrationReportServiceImpl implements CalibrationReportService {
 
-    CalibrationService calibrationService;
+    CalibrationRepository calibrationRepository;
 
     CalibrationReportRepository calibrationReportRepository;
 
     @Autowired
-    public CalibrationReportServiceImpl(CalibrationService calibrationService,
+    public CalibrationReportServiceImpl(CalibrationRepository calibrationRepository,
                            CalibrationReportRepository calibrationReportRepository) {
-        this.calibrationService = calibrationService;
+        this.calibrationRepository = calibrationRepository;
         this.calibrationReportRepository = calibrationReportRepository;
 
 
@@ -25,7 +26,7 @@ public class CalibrationReportServiceImpl implements CalibrationReportService {
 
     @Override
     public Calibration create(Calibration calibration, CalibrationReportDto dto) {
-        Calibration result = calibrationService.doneByTechnician(calibration.toBuilder()
+        Calibration result = calibrationRepository.save(calibration.toBuilder()
                 .uncertainly(dto.getUncertainly())
                 .confidenceLevel(dto.getConfidenceLevel())
                 .coverageFactor(dto.getCoverageFactor())

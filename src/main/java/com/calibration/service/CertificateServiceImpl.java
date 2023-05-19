@@ -3,6 +3,7 @@ package com.calibration.service;
 
 import com.calibration.dto.CertificateCalibrationDto;
 import com.calibration.model.Calibration;
+import com.calibration.repository.CalibrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
@@ -10,15 +11,15 @@ import java.time.LocalDate;
 @Service
 public class CertificateServiceImpl implements CertificateService {
 
-    CalibrationService calibrationService;
+    CalibrationRepository calibrationRepository;
 
     @Autowired
-    CertificateServiceImpl(CalibrationService calibrationService) {
-        this.calibrationService = calibrationService;
+    CertificateServiceImpl(CalibrationRepository calibrationRepository) {
+        this.calibrationRepository = calibrationRepository;
     }
     @Override
     public Calibration create(Calibration calibration, CertificateCalibrationDto dto) {
-        return calibrationService.doneByTypewriter(calibration.toBuilder()
+        return calibrationRepository.save(calibration.toBuilder()
                 .certificateNumber(dto.getCertificateNumber())
                 .calibrationMethod(dto.getCalibrationMethod())
                 .calibrationLocation(dto.getCalibrationLocation())
