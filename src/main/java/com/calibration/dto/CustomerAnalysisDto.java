@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 public class CustomerAnalysisDto {
     Customers customers;
-    int count;
-    float averageRate;
+    Integer count;
+    Float averageRate;
 }
