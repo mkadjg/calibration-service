@@ -100,5 +100,17 @@ public class Calibration {
     @JoinColumn(name = "equipment_id", referencedColumnName = "equipment_id")
     Equipment equipment;
 
+    @ManyToOne
+    @JoinColumn(name = "calibration_method_id", referencedColumnName = "calibration_method_id")
+    CalibrationMethod calibrationMethode;
+
+    @ManyToOne
+    @JoinColumn(name = "traceable_to_si_id", referencedColumnName = "traceable_to_si_id")
+    TraceableToSi traceableToSi;
+
+    @ManyToOne
+    @JoinColumn(name = "standard_calibration_type_id", referencedColumnName = "standard_calibration_type_id")
+    StandardCalibrationType standardCalibrationType;
+
 
 }

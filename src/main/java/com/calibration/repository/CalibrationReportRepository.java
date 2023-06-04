@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface CalibrationReportRepository extends JpaRepository<CalibrationReport, Integer> {
 
-    @Query("select cr from CalibrationReport  cr where cr.calibration.id =:id")
+    @Query("select cr from CalibrationReport cr where cr.calibration.id =:id")
     List<CalibrationReport> findByCalibrationId(int id);
 
     @Modifying

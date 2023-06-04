@@ -12,10 +12,13 @@ import lombok.NoArgsConstructor;
 public class CertificateCalibrationDto {
     String certificateNumber;
     String calibrationMethod;
+    Integer calibrationMethodId;
     String calibrationLocation;
     String issuanceDate;
     String standardName;
     String standardType;
+    Integer standardTypeId;
     String standardSerialNumber;
     String standardTraceableToSI;
+    Integer standardTraceableToSIId;
 }
